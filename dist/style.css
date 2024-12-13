@@ -1,0 +1,349 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&family=Libre+Baskerville&family=DM+Serif+Display&family=Trispace:wght@100&display=swap");
+
+@font-face {
+    font-family: 'Apex Lake Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Apex Lake Regular'), url('fonts/ApexLake-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Essays 1743';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Essays 1743'), url('fonts/essays1743.ttf') format('truetype');
+}
+
+:root {
+  --color-dark: #666;
+  --color-backbackground: #df964a;
+  --color-background: #fcfbf7;
+  --color-text: var(--color-dark);
+  --color-dialog:  #111;
+  --color-alt: #1d3e29;
+  --color-hi: var(--color-alt);
+  --color-hi-active: var(--color-alt);
+  --color-faded: #ddd;
+  --color-lightgray: #eee;
+  --color-form: white;
+  --font-size: 21px;
+  --big: 1.25rem;
+  --small: 0.85rem;
+  --smaller: 0.7rem;
+  --sans-serif: "Helvetica Neue", Arial, sans-serif;
+  --serif: Georgia, serif;
+  --shadow: 0 0 5px var(--color-faded);
+  --setting-font: var(--serif);
+  --setting-align: auto;
+  --setting-theme: "auto";
+
+  --dialog: "Fira Code";
+  --scenic: "Essays 1743";
+  --text:  "Fira Code";
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-setting_theme=""],
+[data-setting_theme=auto] {
+    --color-dark: #1f2327;
+    --color-background: var(--color-dark);
+    --color-text: #999;
+    --color-dialog: #eee;
+    --color-hi: #ef9d1c;
+    --color-hi-active: #c58929;
+    --color-faded: #6d440a;
+    --color-form: #e0effe;
+    --color-lightgray: #462c08;
+    --shadow: 0 0 5px var(--color-dark);
+  }
+}
+[data-setting_theme=dark] {
+  --color-dark: #1f2327;
+  --color-background: var(--color-dark);
+  --color-text: #999;
+  --color-dialog: #eee;
+  --color-hi: #ef9d1c;
+  --color-hi-active: #c58929;
+  --color-faded: #6d440a;
+  --color-form: #e0effe;
+  --color-lightgray: #462c08;
+  --shadow: 0 0 5px var(--color-dark);
+}
+
+[data-setting_align=justify] {
+  --setting-align: justify;
+}
+
+body {
+    font-family: var(--text), sans-serif;
+    font-weight: lighter;
+    color: var(--color-text);
+    background-color: var(--color-backbackground);
+    overflow: hidden;
+}
+
+
+body.switched {
+    transition: color 0.6s, background-color 0.6s;
+}
+
+h1,
+h2 {
+    text-align: center;
+    font-family: var(--scenic);
+    margin: 0;
+    padding: 0;
+}
+h2.byline{
+    font-style: italic;
+}
+
+h1 {
+    font-size: 30pt;
+    margin-bottom: 10px;
+    color: var(--color-alt);
+    /* text-transform: uppercase; */
+}
+
+h2 {
+    font-size: 14pt;
+    font-weight: lighter;
+    color: #BBB;
+}
+
+.header {
+    padding-top: 0em;
+    padding-bottom: 1em;
+}
+
+.header .cover{
+    max-width: 100%;
+    width: 200px;
+    margin-top: 3em;
+}
+
+/* 
+  Enables <iframe> support work on itch.io when using mobile iOS
+*/
+#app{
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: scroll;
+}
+
+.outerContainer {
+    position: absolute;
+    display: block;
+    margin: 0;
+    padding: 0;
+    -webkit-overflow-scrolling: touch;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 980px) {
+    .outerContainer {
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
+.hidden{
+    display: none;
+}
+
+.container {
+    display: block;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 2em;
+    background-color: var(--color-background) ;
+}
+
+.switched .container {
+    transition: background-color 0.6s;
+}
+
+hr {
+    background:url("images/divider.png") no-repeat top center;
+    height: 20px;
+    border: none !important;
+    width: 100%;
+    background-size: contain;
+    margin: 2em 0;
+}
+hr.history{
+    opacity: 0.3;
+}
+
+p {
+    font-family: var(--dialog);
+    color:  var(--color-dialog);
+    font-size: 13pt;
+    line-height: 1.7em;
+    font-weight: lighter;
+    
+}
+p.history{
+    opacity: 0.3;
+}
+p.with-vignette{
+    min-height: 3.4em;
+}
+
+p.scenic, p.infotext{
+    font-family: var(--scenic);
+    color:  var(--color-text);
+    font-size: 15pt;
+    text-align: right;
+}
+
+p.didascalie{
+    font-family: var(--text);
+    color:  var(--color-text);
+    font-weight: normal;
+    font-style: italic;
+}
+p.lettrine::first-letter {
+  padding: 0;
+  margin: 0 0 0 0;
+  font-family: "Apex Lake Regular", monospace;
+  font-size: 3rem;
+  line-height: 1;
+  text-align: center;
+}
+
+p.faded{
+    opacity: 0.4;
+}
+
+a {
+  color: var(--color-hi);
+  text-underline-offset: 2.5px;
+}
+a:hover {
+  color: var(--color-hi-active);
+  text-decoration: none;
+}
+
+a {
+    font-weight: 700;
+    font-family: sans-serif;
+    transition: color 0.6s;
+    text-decoration: none;
+}
+
+a:hover {
+    transition: color 0.1s;
+}
+
+strong {
+    color: black;
+    font-weight: bold;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.container .hide {
+    opacity: 0.0;
+}
+
+.container .invisible {
+    display: none;
+}
+
+.container>* {
+    opacity: 1.0;
+    transition: opacity 1.0s;
+}
+
+.container p:last-child {
+    margin-bottom: 2em;
+}
+
+/*
+  Class applied to all choices
+  (Will always appear inside <p> element by default.)
+*/
+.choice {
+    text-align: left;
+    line-height: 1.1em;
+}
+
+.choice.center{
+    text-align: center;
+}
+
+.choice.exit::before{
+    content: "🚪";
+    font-size: 0.8em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+.choice.dialog::before{
+    content: "💬";
+    font-size: 0.8em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+.choice.wait::before{
+    content: "⏳";
+    font-size: 0.8em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+.choice.action::before{
+    content: "👉";
+    font-size: 0.8em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+.choice.investigate::before{
+    content: "🔎";
+    font-size: 0.8em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+
+/* 
+  Class applied to first choice
+*/
+:not(.choice)+.choice {
+    padding-top: 1em;
+}
+
+/*
+  Class applied to choice links
+*/
+.choice a {
+    font-family: var(--dialog);
+    font-size: 13pt;
+    line-height: 1.3;
+}
+
+/* 
+  Built-in class:
+    The End # CLASS: end
+*/
+.end {
+    text-align: right;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: var(--scenic);
+}
